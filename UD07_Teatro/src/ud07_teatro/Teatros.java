@@ -10,5 +10,6 @@ package ud07_teatro;
  * @author mati
  */
 public class Teatros {
-    
+    private String nombreTeatro;
+    private int numAsientos;
 }
