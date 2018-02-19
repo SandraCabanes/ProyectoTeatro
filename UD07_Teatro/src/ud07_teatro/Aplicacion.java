@@ -21,12 +21,16 @@ public class Aplicacion {
         int op = 0;
         String nombreTeatro;
         String nombre;
+        String localidad;
         int id;
         double precio;
         int asientosLibres;
         int fecha;
         int hora;
-        Funciones funcion;
+        Teatros teatro=null;
+        Localidades ciudad=null;
+        boolean estaTeatro=false;
+        Funciones funcion=null;
 
         do {
             menu();
@@ -39,26 +43,48 @@ public class Aplicacion {
                     do {
                         System.out.println("Nombre teatro: ");
                         nombreTeatro = teclado.nextLine();
-                    } while (!localidad.buscarTeatro(nombreTeatro));
+                        estaTeatro=ciudad.buscarTeatro(nombreTeatro);
+                    } while (estaTeatro);
 
-                    if ( != null) {
+                    if (!estaTeatro) {
+                        
                         System.out.print("ID: ");
                         id = teclado.nextInt();
                         teclado.nextLine();
                         System.out.print("Nombre función: ");
                         nombre = teclado.nextLine();
                         System.out.print("Precio: ");
-                        precio=teclado.nextDouble();
+                        precio = teclado.nextDouble();
                         System.out.print("Asientos libres: ");
-                        asientosLibres=teclado.nextInt();
+                        asientosLibres = teclado.nextInt();
                         System.out.print("Fecha: ");
-                        fecha=teclado.nextInt();
+                        fecha = teclado.nextInt();
                         System.out.print("Hora: ");
-                        hora=teclado.nextInt();
+                        hora = teclado.nextInt();
+                        teclado.nextLine();
                         
-                        funcion=new Funciones(id, nombre, precio, asientosLibres, fecha, hora);
+                        if(teatro.buscarFuncion(nombre, precio)){
+                            System.out.println("La función ya existe");
+                        }else{
+                            funcion = new Funciones(id, nombre, precio, asientosLibres, fecha, hora);
+                            teatro.añadirFuncion(funcion);
+                        }
                     }
                     break;
+                    
+                    
+                case 2:
+                    System.out.print("Nombre de la función a modificar: ");
+                    nombre=teclado.nextLine();
+                    System.out.print("Precio a modificar: ");
+                    precio=teclado.nextDouble();
+                    teatro.modificarFuncion(nombre, precio);
+                    break;
+                    
+                case 3:
+                    
+                    break;
+                    
 
                 case 0:
                     System.out.println("Salir");

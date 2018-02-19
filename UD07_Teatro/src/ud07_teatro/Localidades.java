@@ -12,17 +12,22 @@ import java.util.ArrayList;
  * @author mati
  */
 public class Localidades {
+
     private String nombre;
     private int numTeatros;
     private ArrayList<Teatros> listaTeatros;
 
     public Localidades() {
-        listaTeatros=new ArrayList<>();
+        listaTeatros = new ArrayList<>();
     }
-    
-    public boolean buscarTeatro(String nombre){
-        
+
+    public boolean buscarTeatro(String nombreTeatro){
+        for (int i = 0; i < listaTeatros.size(); i++) {
+            if(listaTeatros.get(i).getNombreTeatro().equalsIgnoreCase(nombreTeatro)){
+                return true;
+            }
+        }
+        return false;
     }
-    
     
 }

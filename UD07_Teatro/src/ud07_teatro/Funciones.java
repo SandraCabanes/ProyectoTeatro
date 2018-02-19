@@ -29,6 +29,10 @@ public class Funciones {
         this.hora = hora;
     }
     
+    @Override
+    public String toString() { //MOSTRAR FUNCION
+        return "Funciones{" + "id=" + id + ", nombre=" + nombre + ", precio=" + precio + ", asientosLibres=" + asientosLibres + ", fecha=" + fecha + ", hora=" + hora + '}';
+    }
     
 
     public int getId() {
